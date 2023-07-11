@@ -1,7 +1,7 @@
-#importing the pygame module
+# Importing the pygame module
 import pygame as pyg
 
-# game initialisation
+# Game initialisation
 pyg.init()
 screen = pyg.display.set_mode((590,400))
 pyg.display.set_caption("BALL GAME")
@@ -18,13 +18,13 @@ x_ball, y_ball = (285, 135)
 x_speed, y_speed = (4, 0.7)
 clock = pyg.time.Clock()
 
-# game name
+# Game name
 font = pyg.font.Font('freesansbold.ttf', 40)
 text = font.render('BALL GAME', True, 'green', 'black')
 text_frame = text.get_rect()
 text_frame.center = (300, 350)
 
-# player name
+# Player name
 font_names = pyg.font.Font('freesansbold.ttf', 30)
 player_names = font_names.render('PLAYER 1                       PLAYER 2', True, 'red', 'black')
 names_frame = player_names.get_rect()
@@ -32,6 +32,7 @@ names_frame.center = (300, 300)
 
 while not done:
     clock.tick(50)
+    
     for event in pyg.event.get():
         if event.type == pyg.QUIT:
             done = True
@@ -44,17 +45,17 @@ while not done:
                 colour = colours[shifter]
     screen.fill([0, 0, 0])
 
-# setting up text
+# Setting up text
     screen.blit(text, text_frame)
     screen.blit(player_names, names_frame)
 
-# setting frame
+# Setting frame
     pyg.draw.rect(screen, colour, pyg.Rect(9, 10, 560, 5))
     pyg.draw.rect(screen, colour, pyg.Rect(9, 275, 560, 5))
     pyg.draw.rect(screen, colour, pyg.Rect(9, 10, 5, 270))
     pyg.draw.rect(screen, colour, pyg.Rect(569, 10, 5, 270))
 
-# creating ball logic
+# Creating ball logic
     pyg.draw.circle(screen, "yellow", (x_ball, y_ball), 6, 4)
     if x_ball >= 550 and (y_ball > y2) and (y_ball < y2+70):
         x_speed = -(x_speed + 0.1)
@@ -73,7 +74,7 @@ while not done:
         winner = "PLAYER 1"
         x_speed, y_speed = 0, 0
 
-# declaring winner
+# Declaring winner
     if winner:
         winner_name = font_names.render('GAME OVER!!! The winner is: ' + winner, True, 'green', 'black')
         win_frame = winner_name.get_rect()
@@ -83,7 +84,7 @@ while not done:
     x_ball += x_speed
     y_ball += y_speed
 
-# handling event
+# Handling event
     pressed = pyg.key.get_pressed()
     if pressed[pyg.K_w] and y1 > 20:
         y1 -= 5
@@ -97,3 +98,5 @@ while not done:
         y2 += 5
     pyg.draw.rect(screen, colour_board, pyg.Rect(x2, y2, 15, 70))
     pyg.display.flip()
+    
+# This game looks worse than the save drops one, but in my own view works better
