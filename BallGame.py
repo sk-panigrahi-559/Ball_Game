@@ -24,7 +24,7 @@ text = font.render('BALL GAME', True, 'green', 'black')
 text_frame = text.get_rect()
 text_frame.center = (300, 350)
 
-# Player name
+# Player names
 font_names = pyg.font.Font('freesansbold.ttf', 30)
 player_names = font_names.render('PLAYER 1                       PLAYER 2', True, 'red', 'black')
 names_frame = player_names.get_rect()
@@ -32,7 +32,7 @@ names_frame.center = (300, 300)
 
 while not done:
     clock.tick(50)
-    
+    print("cycle no. :")
     for event in pyg.event.get():
         if event.type == pyg.QUIT:
             done = True
@@ -99,4 +99,5 @@ while not done:
     pyg.draw.rect(screen, colour_board, pyg.Rect(x2, y2, 15, 70))
     pyg.display.flip()
     
-# This game looks worse than the save drops one, but in my own view works better
+# This game looks worse than the save drops one, but in my own view works better.
+# This was the very first game i ever created.
